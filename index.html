@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Trade Intelligence Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Global Trade Intelligence Dashboard</h1>
+    <p>Interactive view of country-level imports, exports, and top traded categories.</p>
+  </header>
+
+  <main>
+    <section class="controls card">
+      <label for="countrySelect">Select Country:</label>
+      <select id="countrySelect" aria-label="Select country"></select>
+
+      <label for="metricSelect">Map Metric:</label>
+      <select id="metricSelect" aria-label="Select map metric">
+        <option value="exports">Total Exports</option>
+        <option value="imports">Total Imports</option>
+        <option value="balance">Trade Balance</option>
+        <option value="turnover">Trade Turnover</option>
+      </select>
+
+      <label for="yearSelect">Year:</label>
+      <select id="yearSelect" aria-label="Select year"></select>
+    </section>
+
+    <section class="kpi-grid">
+      <article class="card"><h3>Country Exports</h3><p id="kpiExports">-</p></article>
+      <article class="card"><h3>Country Imports</h3><p id="kpiImports">-</p></article>
+      <article class="card"><h3>Trade Balance</h3><p id="kpiBalance">-</p></article>
+      <article class="card"><h3>World Share</h3><p id="kpiShare">-</p></article>
+    </section>
+
+    <section class="grid-two">
+      <article class="card">
+        <h2>Global Trade Map</h2>
+        <div id="worldMap" class="viz"></div>
+      </article>
+
+      <article class="card">
+        <h2 id="countryTitle">Country Profile</h2>
+        <div id="countryMeta" class="meta"></div>
+        <h3>Top 10 Export Categories</h3>
+        <div id="exportsChart" class="viz small"></div>
+        <h3>Top 10 Import Categories</h3>
+        <div id="importsChart" class="viz small"></div>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Additional Insight: Global Trade Leaders</h2>
+      <p>This table shows the top 10 countries by trade turnover (exports + imports), with surplus/deficit status.</p>
+      <div id="leadersTable"></div>
+    </section>
+  </main>
+</body>
+</html>
